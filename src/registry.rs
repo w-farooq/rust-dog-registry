@@ -1,6 +1,6 @@
 use crate::models::dog::Dog;
-use crate::models::person::Person;
 use crate::models::litter::Litter;
+use crate::models::person::Person;
 
 pub struct Registry {
     dogs: Vec<Dog>,
@@ -18,8 +18,6 @@ impl Registry {
         }
     }
 
-    
-    
     // 1. Add a dog to the registry
     pub fn add_dog(&mut self, dog: Dog) {
         self.dogs.push(dog);
@@ -38,7 +36,18 @@ impl Registry {
 
     // 3. Get all dogs (return references)
     pub fn get_all_dogs(&self) -> &Vec<Dog> {
-        
         &self.dogs
+    }
+
+    // 4. Delete dog by id
+    pub fn delete_dog(&mut self, id: u32) -> Option<Dog> {
+        for (index, dog) in self.dogs.iter().enumerate() {
+            if dog.id == id {
+                let removed_dog = self.dogs.remove(index);
+                return Some(removed_dog);
+            }
+        }
+
+        None
     }
 }

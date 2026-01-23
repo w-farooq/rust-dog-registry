@@ -8,13 +8,7 @@ pub struct Litter {
 }
 
 impl Litter {
-    pub fn new(
-        id: u32,
-        sire_id: u32,
-        dam_id: u32,
-        breeder_id: u32,
-        date_of_birth: String,
-    ) -> Self {
+    pub fn new(id: u32, sire_id: u32, dam_id: u32, breeder_id: u32, date_of_birth: String) -> Self {
         Litter {
             id,
             sire_id,
