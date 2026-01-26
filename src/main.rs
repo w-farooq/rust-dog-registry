@@ -4,6 +4,23 @@ mod registry;
 use models::dog::{Dog, Gender};
 use registry::Registry;
 
+
+fn display_all_dogs (dogs : &Vec<Dog>) {
+
+   println!("{:<5} {:<15} {:<20}", "No.", "Name", "Breed");
+
+
+
+    for (index, dog) in dogs.iter().enumerate() {
+
+        let i = index+1;
+        println!("{:<5} {:<15} {:<20}", i, dog.name, dog.breed);
+        
+    }
+
+    
+}
+
 fn main() {
     let mut registry = Registry::new();
 
@@ -31,6 +48,10 @@ fn main() {
     // Add dogs
     registry.add_dog(oliver);
     registry.add_dog(bella);
+
+
+    // Display all dogs 
+    display_all_dogs(registry.get_all_dogs());
 
     // Test find_dog
     match registry.find_dog(1) {
